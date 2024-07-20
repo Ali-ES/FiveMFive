@@ -1,10 +1,12 @@
 package ir.FiveMFive.FiveMFive.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,13 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import ir.FiveMFive.FiveMFive.Activity.LoginActivity;
 import ir.FiveMFive.FiveMFive.Java.CategoryItem;
 import ir.FiveMFive.FiveMFive.R;
 import ir.FiveMFive.FiveMFive.RecyclerViewAdapter;
+import ir.FiveMFive.FiveMFive.Utility.CredentialCrypter;
+import ir.FiveMFive.FiveMFive.Utility.PopupBuilder;
 import ir.FiveMFive.FiveMFive.Utility.ToolbarHandler;
 
 public class CategoryFragment extends Fragment {
@@ -65,7 +71,26 @@ public class CategoryFragment extends Fragment {
         categoryRecycle.setLayoutManager(layoutManager);
 
         toolbar = v.findViewById(R.id.toolbar);
-        ToolbarHandler.handleBackNav(this, toolbar);
+
+        ConstraintLayout toolbarLayout = toolbar.findViewById(R.id.toolbar_layout);
+        ImageView more = toolbarLayout.findViewById(R.id.more_iv);
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupBuilder popupBuilder = new PopupBuilder(getContext());
+                popupBuilder.addItem(R.drawable.ic_exit, R.string.exit, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CredentialCrypter.removeSavedCredentials(requireContext());
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(intent);
+                        requireActivity().finish();
+                        popupBuilder.dismiss();
+                    }
+                });
+                popupBuilder.showPopup(toolbar);
+            }
+        });
 
         if(categoryType != null) {
             switch (categoryType) {
@@ -79,9 +104,9 @@ public class CategoryFragment extends Fragment {
                     RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, CATEGORY_LAYOUT_TYPE, categoryItems);
                     categoryRecycle.setAdapter(adapter);
 
-                    TextView titleText = (TextView) toolbar.findViewById(R.id.title_tv);
-                    titleText.setText(getText(R.string.send_message));
-                    break;
+//                    TextView titleText = (TextView) toolbarLayout.findViewById(R.id.title_tv);
+//                    titleText.setText(getText(R.string.send_message));
+//                    break;
             }
         }
 

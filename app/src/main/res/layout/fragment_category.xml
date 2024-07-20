@@ -7,14 +7,13 @@
     tools:context=".Fragment.CategoryFragment">
 
     <include
-        layout="@layout/toolbar_with_back_nav"
+        layout="@layout/toolbar_main"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/category_recycle"
-        android:layout_marginTop="@dimen/mg_tb_fragment_category_recycler"
         android:layout_marginBottom="@dimen/mg_tb_fragment_category_recycler"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent" />

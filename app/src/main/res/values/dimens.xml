@@ -59,7 +59,7 @@
 
 
     <dimen name="mg_s_action_bar_icons">16dp</dimen>
-    <dimen name="mg_t_card_category">10dp</dimen>
+    <dimen name="mg_t_card_category">20dp</dimen>
 
     <dimen name="mg_tb_fragment_category_recycler">5dp</dimen>
 

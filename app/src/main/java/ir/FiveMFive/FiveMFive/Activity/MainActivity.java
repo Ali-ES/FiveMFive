@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 
 import java.util.concurrent.Executor;
 
+import ir.FiveMFive.FiveMFive.Fragment.CategoryFragment;
 import ir.FiveMFive.FiveMFive.Fragment.DashboardFragment;
 import ir.FiveMFive.FiveMFive.ProgressIndicatorListener;
 import ir.FiveMFive.FiveMFive.R;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         prompt.authenticate(promptInfo);
     }
     private void openDashboardFragment() {
-        Fragment fragment = new DashboardFragment();
+        Fragment fragment = CategoryFragment.newInstance(CategoryFragment.CategoryType.SEND_MESSAGE);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
         ft.replace(R.id.fragment_container, fragment);
