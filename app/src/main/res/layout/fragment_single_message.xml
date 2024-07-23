@@ -68,8 +68,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/receiver_et_layout"
                     android:background="@drawable/bg_field_unfocused"
-                    android:paddingStart="@dimen/pad_se_send_message_fields"
-                    android:paddingEnd="@dimen/pad_se_send_message_fields" >
+                    android:paddingStart="@dimen/pad_se_send_message_fields" >
 
                     <TextView
                         android:layout_width="0dp"
@@ -90,17 +89,19 @@
                         android:layout_height="0dp"
                         android:id="@+id/receiver_divider"
                         android:background="@color/gray_stroke"
-                        android:layout_marginEnd="@dimen/pad_se_send_message_fields"
                         app:layout_constraintStart_toEndOf="@id/receiver_tv"
                         app:layout_constraintEnd_toStartOf="@id/add_iv"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="45dp"
+                        android:layout_height="0dp"
                         android:id="@+id/add_iv"
                         android:src="@drawable/ic_add"
+                        android:background="?attr/selectableItemBackground"
+                        android:paddingStart="@dimen/pad_se_send_message_fields"
+                        android:paddingEnd="@dimen/pad_se_send_message_fields"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent" />

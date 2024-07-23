@@ -1,5 +1,7 @@
 package ir.FiveMFive.FiveMFive.ViewHolders;
 
+import android.content.Context;
+import android.content.res.TypedArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import ir.FiveMFive.FiveMFive.R;
 import ir.FiveMFive.FiveMFive.RecyclerViewAdapter;
 
 public class MobileHolder extends RecyclerView.ViewHolder {
+    private Context c;
     private TextView mobile;
     private ImageView delete;
     private RecyclerViewAdapter adapter;
@@ -20,6 +23,7 @@ public class MobileHolder extends RecyclerView.ViewHolder {
     public MobileHolder(LayoutInflater inflater, ViewGroup parent, RecyclerViewAdapter adapter) {
         super(inflater.inflate(R.layout.card_removable_item, parent, false));
         this.adapter = adapter;
+        this.c = parent.getContext();
 
         mobile = itemView.findViewById(R.id.item_tv);
         delete = itemView.findViewById(R.id.delete_iv);
@@ -36,6 +40,12 @@ public class MobileHolder extends RecyclerView.ViewHolder {
                 adapter.notifyItemRemoved(getAdapterPosition());
             }
         });
+
+        int[] attrs = new int[] {androidx.appcompat.R.attr.selectableItemBackground};
+        TypedArray typedArray = c.obtainStyledAttributes(attrs);
+        int backgroundResource = typedArray.getResourceId(0, 0);
+        delete.setBackgroundResource(backgroundResource);
+        typedArray.recycle();
     }
     public void bind(String number) {
         mobile.setText(number);

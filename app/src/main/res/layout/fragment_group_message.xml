@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    tools:context=".Fragment.SendMessage.SingleMessageFragment">
+    tools:context=".Fragment.SendMessage.GroupMessageFragment">
 
     <include
         layout="@layout/toolbar_with_back_nav"
@@ -76,6 +76,7 @@
                         android:text="@string/add_all_groups"
                         android:textColor="@color/navy_blue"
                         android:textSize="@dimen/ts_send_message_header_footer"
+                        android:background="?attr/selectableItemBackground"
                         android:layout_marginEnd="@dimen/mg_send_message_header_footer"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/receiver_title_tv"

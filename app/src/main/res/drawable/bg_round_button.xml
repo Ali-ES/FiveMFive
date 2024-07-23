@@ -5,5 +5,4 @@
         android:color="@color/navy_blue" />
     <corners
         android:radius="13sp" />
-
 </shape>

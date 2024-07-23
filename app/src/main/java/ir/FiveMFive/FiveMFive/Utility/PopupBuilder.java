@@ -2,6 +2,7 @@ package ir.FiveMFive.FiveMFive.Utility;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -57,6 +58,13 @@ public class PopupBuilder {
         layout.setPadding(toDp(layoutSEPadding), layoutTBPadding, toDp(layoutSEPadding), layoutTBPadding);
         layout.addView(icon, iconParams);
         layout.addView(text, textParams);
+
+
+        int[] attrs = new int[] {androidx.appcompat.R.attr.selectableItemBackground};
+        TypedArray typedArray = c.obtainStyledAttributes(attrs);
+        int backgroundResource = typedArray.getResourceId(0, 0);
+        layout.setBackgroundResource(backgroundResource);
+        typedArray.recycle();
 
         main.addView(layout, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         main.addView(getDivider());
